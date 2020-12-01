@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
         //Take the current player and we will be changing it to x=0,y=0,z=0
         transform.position = new Vector3(0,0,0); 
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -28,6 +27,15 @@ public class PlayerController : MonoBehaviour
         {
             //move the player to the right
             transform.Translate(_speed * Time.deltaTime,0,0);
+            //Moving to the right changes the colour of the player to blue
+            gameObject.GetComponent<Renderer>().material.color = Color.blue;
+        } 
+        else if(Input.GetKey(KeyCode.LeftArrow))
+        {
+            //move the player to the left
+            transform.Translate(-_speed * Time.deltaTime,0,0);
+            //Moving to the left changes the colour of the player to green
+            gameObject.GetComponent<Renderer>().material.color = Color.green;
         }
     }
 }
